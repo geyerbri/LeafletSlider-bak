@@ -116,10 +116,10 @@ L.Control.SliderControl = L.Control.extend({
                 var fg = L.featureGroup();
                 if(!!_options.markers[ui.value]) {
                     // If there is no time property, this line has to be removed (or exchanged with a different property)
-                    if(_options.markers[ui.value].properties.feature !== undefined) {
-                        if(_options.markers[ui.value].properties[_options.timeAttribute]){
+                    if(_options.markers[ui.value].feature !== undefined) {
+                        if(_options.markers[ui.value].feature.properties[_options.timeAttribute]){
                             if(_options.markers[ui.value]) $('#slider-timestamp').html(
-                                _extractTimestamp(_options.markers[ui.value].properties[_options.timeAttribute], _options));
+                                _extractTimestamp(_options.markers[ui.value].feature.properties[_options.timeAttribute], _options));
                         }else {
                             console.error("Time property "+ _options.timeAttribute +" not found in data");
                         }
@@ -155,8 +155,8 @@ L.Control.SliderControl = L.Control.extend({
                         }
                     }else if(_options.sameDate){
                         var currentTime;
-                        if (_options.markers[ui.value].properties.feature !== undefined) {
-                            currentTime = _options.markers[ui.value].properties.time;
+                        if (_options.markers[ui.value].feature !== undefined) {
+                            currentTime = _options.markers[ui.value].feature.properties.time;
                         } else {
                             currentTime = _options.markers[ui.value].options.time;
                         }
@@ -180,7 +180,7 @@ L.Control.SliderControl = L.Control.extend({
             }
         });
         if (!_options.range && _options.alwaysShowDate) {
-            $('#slider-timestamp').html(_extractTimeStamp(_options.markers[index_start].properties[_options.timeAttribute], _options));
+            $('#slider-timestamp').html(_extractTimeStamp(_options.markers[index_start].feature.properties[_options.timeAttribute], _options));
         }
         for (i = _options.minValue; i <= index_start; i++) {
             _options.map.addLayer(_options.markers[i]);
