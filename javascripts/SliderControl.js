@@ -156,7 +156,7 @@ L.Control.SliderControl = L.Control.extend({
                     }else if(_options.sameDate){
                         var currentTime;
                         if (_options.markers[ui.value].properties.feature !== undefined) {
-                            currentTime = _options.markers[ui.value]properties.time;
+                            currentTime = _options.markers[ui.value].properties.time;
                         } else {
                             currentTime = _options.markers[ui.value].options.time;
                         }
